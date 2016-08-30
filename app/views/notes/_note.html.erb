@@ -1,0 +1,6 @@
+<h1><%= note.name %></h1>
+<p>Subject: <strong><%= subject_name(note) %></strong></p>
+<p><%= note.content %></p>
+
+<%= button_to "Edit" , edit_subject_note_path(note.subject,note) %>
+<%= button_to "Delete" , subject_note_path(note.subject,note), method: :delete %>

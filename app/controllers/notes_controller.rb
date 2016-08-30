@@ -1,9 +1,14 @@
 class NotesController < ApplicationController
-  before_action :find_note, only: [:show]
+
+  before_action :find_note, only: [:show,:edit, :delete]
 
   def show
-    @note = Note.find_by(id:params[:id])
-    @subject = @note.subject.id
+  end
+
+  def edit
+  end
+
+  def delete
   end
 
   def find_note
