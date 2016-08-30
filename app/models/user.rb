@@ -12,4 +12,6 @@ class User < ApplicationRecord
     end      
   end
 
+  has_many :notes
+  has_many :subjects, through: :notes
 end
