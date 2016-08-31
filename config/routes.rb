@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :subjects do
     resources :notes
   end
+  get 'notes/new' => 'notes#new', as: 'notes'
+
   get 'static/index'
   get 'home/index'
 

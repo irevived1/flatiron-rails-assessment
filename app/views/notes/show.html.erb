@@ -1,1 +1,2 @@
 <%= render :partial => "note", :locals => { :note => @note } %>
+<%= button_to "Edit" , edit_subject_note_path(@note.subject,@note) , method: :get %>

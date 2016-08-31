@@ -1,6 +1,11 @@
 class NotesController < ApplicationController
 
-  before_action :find_note, only: [:show,:edit, :delete]
+  before_action :find_note, only: [:show, :edit, :delete]
+
+  def new
+    @note = Note.new
+    @note.build_subject
+  end
 
   def show
   end

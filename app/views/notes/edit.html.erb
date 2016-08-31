@@ -1,0 +1,3 @@
+<h1>Edit Your Note:</h1>
+<%= render :partial => "form", :locals => { :note => @note } %>
+<%= button_to "Delete" , subject_note_path(@note.subject,@note), method: :delete %>

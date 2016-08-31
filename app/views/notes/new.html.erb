@@ -1,8 +1,9 @@
-<%= form_for [ note.subject, note ] do |f| %>
+<h1>New Note:</h1>
+<%= form_for @note do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br />
-  <%= f.fields_for note.subject do |sub| %>
+  <%= f.fields_for @note.subject do |sub| %>
     <%= sub.label "Subject"  %>
     <%= sub.text_field :name , list: "subject_autocomplete" %>
       <datalist id="subject_autocomplete">
