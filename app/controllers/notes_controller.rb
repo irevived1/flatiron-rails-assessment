@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
 
-  before_action :find_note, only: [:show, :edit, :delete, :update]
+  before_action :find_note, only: [:show, :edit, :destroy, :update]
 
   def new
     @note = Note.new
@@ -40,7 +40,9 @@ class NotesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @note.destroy
+    redirect_to home_index_path
   end
 
   def find_note
