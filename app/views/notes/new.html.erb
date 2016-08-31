@@ -1,14 +1,21 @@
 <h1>New Note:</h1>
+<%# <%= (render :partial => "create")  %1> %>
 <%= form_for @note do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br />
-  <%= f.fields_for @note.subject do |sub| %>
+  <%= f.fields_for :subject_attributes do |sub| %>
     <%= sub.label "Subject"  %>
     <%= sub.text_field :name , list: "subject_autocomplete" %>
-      <datalist id="subject_autocomplete">
-        <%= Subject.all.each do |subject| %>
-          <option value="<%= subject.name %>">
+      <datalist id="subject_autocomplete"  >
+        <%# <%= Subject.all.each do |subject| %1> %>
+        <% tmp = Subject.all %>
+        <% i = Subject.all.size %>
+        <% k = 0 %>
+        <% while k < i %>
+          <option value="<%= tmp[k].name %>">
+          <%# <option value="<%= subject.name %1>"> %>
+          <% k = k + 1 %>
         <% end %>
       </datalist>
   <% end %>

@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   resources :subjects do
     resources :notes
   end
+  # resource :notes
   get 'notes/new' => 'notes#new', as: 'notes'
+  post 'notes/new' => 'notes#create'
+  # put 'notes/:id' => 'notes#update'
 
   get 'static/index'
   get 'home/index'
