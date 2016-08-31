@@ -1,3 +1,5 @@
+<br />
+<%= button_to "Back to Subjects", subjects_path, method: :get %>
 <h1>Subject: <%= cap_sub(@subject) %></h1>
 <%= button_to "Add Note to #{cap_sub(@subject)}", notesub_path(@subject), method: :get %>
 <%= render(list_note(@subject)) || "You have no notes for #{cap_sub(@subject)}." %>
