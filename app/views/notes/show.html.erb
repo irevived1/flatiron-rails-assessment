@@ -1,4 +1,4 @@
 <br />
-<%= button_to "Back to #{subject_name(@note)}", subjects_path(@note.subject) , method: :get %>
+<%= button_to "Back to #{subject_name(@note)}", subject_path(@note.subject) , method: :get %>
 <%=  (render :partial => "note", :locals => { :note => @note })%>
 <%= button_to "Edit" , edit_subject_note_path(@note.subject,@note) , method: :get %>
