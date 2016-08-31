@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  get 'subjects/:id/notes/new' => 'notes#notewithsub', as: 'notesub'
   resources :subjects do
     resources :notes
   end

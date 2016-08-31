@@ -12,6 +12,8 @@
     <header id="header">
       <% if user_signed_in? %>
         <li>Hello, <%= current_user.email %></li>
+        <li><%= link_to "Your List of Notes",home_index_path  %></li>
+        <li><%= link_to "Your List of Subjects", subjects_path  %></li>
         <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
       <% else %>
         <%= link_to "Log In",  new_user_session_path %>

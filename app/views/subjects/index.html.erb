@@ -1,0 +1,10 @@
+<h1>All Your Subjects</h1>
+<h2>Most Popular subject: <%= cap_sub(Subject.most_popular_subject.first) %></h2>
+<h2>Least Popular subject: <%= cap_sub(Subject.least_popular_subject.first) %></h2>
+<% tmp = @subjects %>
+<% size = tmp.size %>
+<% i = 0 %>
+<% while i < size %>
+  <h2><li><%= link_to cap_sub(tmp[i]) , subject_path(tmp[i]) %></li></h2>
+  <% i += 1 %>
+<% end %>

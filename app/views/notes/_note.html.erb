@@ -1,3 +1,3 @@
-<h1><%= note.name %></h1>
-<p>Subject: <strong><%= subject_name(note) %></strong></p>
-<p><%= note.content %></p>
+<h1><%= link_to note.name, subject_note_path(note.subject,note) %></h1>
+<p>Subject: <strong><%= link_to subject_name(note), subject_path(note.subject) %></strong></p>
+<p>Content: <%= note.content %></p>

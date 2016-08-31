@@ -1,3 +1,19 @@
 <h1>Edit Your Note:</h1>
+
+<%# <% if @note.errors.any? %1> %>
+<%#   <div id="error_explanation"> %>
+<%#     <h2> %>
+<%#       <%= pluralize(@note.errors.count, "error") %1> %>
+<%#       prohibited this article from being saved: %>
+<%#     </h2> %>
+ 
+<%#     <ul> %>
+<%#     <% @note.errors.full_messages.each do |msg| %1> %>
+<%#       <li><%= msg %1></li> %>
+<%#     <% end %1> %>
+<%#     </ul> %>
+<%#   </div> %>
+<%# <% end %1> %>
+
 <%= (render :partial => "form", :locals => { :note => @note }) %>
 <%= button_to "Delete" , subject_note_path(@note.subject,@note), method: :delete %>

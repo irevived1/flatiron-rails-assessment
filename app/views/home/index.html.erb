@@ -1,0 +1,4 @@
+<h1>All Your Notes:</h1>
+<%# #new path %>
+<%= button_to "Add A Note" , notes_path, method: :get %>
+<%= render(@notes) || "You have no notes." %>
