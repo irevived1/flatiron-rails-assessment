@@ -1,10 +1,41 @@
-<h1>All Your Subjects</h1>
-<h2>Most Popular subject: <%= cap_sub(Subject.most_popular_subject.first) %></h2>
-<h2>Least Popular subject: <%= cap_sub(Subject.least_popular_subject.first) %></h2>
+<%# <h1>All Your Subjects</h1> %>
+<h3>Most Popular subject: <%= cap_sub(Subject.most_popular_subject.first) %></h3>
+<h3>Least Popular subject: <%= cap_sub(Subject.least_popular_subject.first) %></h3>
+<%# <% tmp = @subjects %1> %>
+<%# <% size = tmp.size %1> %>
+<%# <% i = 0 %1> %>
+<%# <% while i < size %1> %>
+<%#   <h2><li><%= link_to cap_sub(tmp[i]) , subject_path(tmp[i]) %1></li></h2> %>
+<%#   <% i += 1 %1> %>
+<%# <% end %1> %>
+
+
+<%- model_class = Subject -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= "Count" %></th>
+    </tr>
+  </thead>
+  <tbody>
 <% tmp = @subjects %>
 <% size = tmp.size %>
 <% i = 0 %>
-<% while i < size %>
-  <h2><li><%= link_to cap_sub(tmp[i]) , subject_path(tmp[i]) %></li></h2>
-  <% i += 1 %>
-<% end %>
+  <% while i < size %>
+      <tr>
+        <td><%= link_to cap_sub(tmp[i]) , subject_path(tmp[i]) %></td>
+        <td><%= list_note(tmp[i]).size %></td>
+        <td>
+          <%= link_to "Add",
+                      notesub_path(tmp[i]), :class => 'btn btn-default btn-xs' %>
+        </td>
+      </tr>
+    <% i += 1 %>
+    <% end %>
+  </tbody>
+</table>
+
