@@ -1,4 +1,11 @@
-<br />
-<%= button_to "Back to #{subject_name(@note)}", subject_path(@note.subject) , method: :get %>
 <%=  (render :partial => "note", :locals => { :note => @note })%>
-<%= button_to "Edit" , edit_subject_note_path(@note.subject,@note) , method: :get %>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              subject_path(@note.subject), :class => 'btn btn-default' , method: :get %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_subject_note_path(@note), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              subject_note_path(@note.subject ,@note),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

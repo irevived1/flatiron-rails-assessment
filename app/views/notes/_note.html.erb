@@ -1,3 +1,15 @@
-<h1><%= link_to note.name, subject_note_path(note.subject,note) %></h1>
-<p>Subject: <strong><%= link_to subject_name(note), subject_path(note.subject) %></strong></p>
-<p>Content: <%= note.content %></p>
+<%- model_class = Note -%>
+<div class="page-header">
+  <%# <h1><%=t '.title', :default => model_class.model_name.human.titleize %1></h1> %>
+  <h1><%= note.name %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= link_to note.name, subject_note_path(note.subject,note) %></dd>
+  <dt><strong><%= "Subject" %>:</strong></dt>
+  <dd><%= link_to subject_name(note), subject_path(note.subject) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
+  <dd><%= note.content %></dd>
+</dl>
+
