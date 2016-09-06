@@ -15,6 +15,7 @@ class NotesController < ApplicationController
     end
     @note.user = current_user
     if @note.save && @note.subject.save
+      flash[:notice] = "Successfully created new note."
       redirect_to subject_note_path(@note.subject,@note)
     else
       flash[:notice] = "Warning, no fields can be blank!"
@@ -40,6 +41,7 @@ class NotesController < ApplicationController
     end
     @note.update(note_params)
     if @note.valid? && @note.subject.valid?
+      flash[:notice] = "Successfully updated your note."
       redirect_to subject_note_path(@note.subject,@note)
     else
       flash[:notice] = "Warning, no fields can be blank!"

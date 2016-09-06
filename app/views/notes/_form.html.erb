@@ -29,6 +29,11 @@
     <%= sub.label "Subject" , :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <%= sub.text_field :name , :class => 'form-control', list: "subject_autocomplete",  value:"#{note.subject.name}" %>
+
+    <%# <datalist id="subject_autocomplete"  > %>
+    <%#     <%= Subject.all.each  do |suuu| %1> %>
+    <%#       <option value="<%= suuu.name %1>"> %>
+    <%#     <% end %1> %>
     <datalist id="subject_autocomplete"  >
         <% tmp = Subject.all %>
         <% i = Subject.all.size %>
@@ -59,4 +64,5 @@
     </div>
   </div>
 
+</div>
 <% end %>
