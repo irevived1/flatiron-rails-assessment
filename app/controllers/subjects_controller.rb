@@ -12,7 +12,7 @@ class SubjectsController < ApplicationController
     unless @subject
       return redirect_to subjects_path
     end
-    @notes = Note.where("user_id == #{current_user.id} AND subject_id == #{sub.id}")
+    @notes = Note.list_note(current_user,@subject)
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @notes}
