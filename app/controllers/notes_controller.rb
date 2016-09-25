@@ -24,7 +24,9 @@ class NotesController < ApplicationController
   end
 
   def show
-    @note = Note.find_by(id:params[:id])
+    if @note.user_id != current_user.id
+      return redirect_to home_index_path
+    end
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @note}
@@ -32,6 +34,9 @@ class NotesController < ApplicationController
   end
 
   def edit
+    if @note.user_id != current_user.id
+      return redirect_to home_index_path
+    end
   end
 
   def notewithsub
@@ -47,7 +52,12 @@ class NotesController < ApplicationController
     @note.update(note_params)
     if @note.valid? && @note.subject.valid?
       flash[:notice] = "Successfully updated your note."
-      redirect_to subject_note_path(@note.subject,@note)
+      # redirect_to subject_note_path(@note.subject,@note)
+
+      respond_to do |format|
+        format.html { redirect_to subject_note_path(@note.subject,@note) }
+        format.json { render json: @note}
+      end
     else
       flash[:notice] = "Warning, no fields can be blank!"
       return redirect_to edit_subject_note_path(@note.subject,@note)
@@ -61,7 +71,7 @@ class NotesController < ApplicationController
 
   def find_note
     @note = Note.find_by(id:params[:id])
-    unless @note 
+    unless @note
       redirect_to home_index_path
     end
   end

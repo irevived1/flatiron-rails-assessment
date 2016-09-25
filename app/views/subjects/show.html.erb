@@ -4,4 +4,4 @@
 <h1>Subject: <%= cap_sub(@subject) %></h1>
 <br />
 <%= link_to "Add Note to #{cap_sub(@subject)}", notesub_path(@subject), :class => 'btn btn-default btn-s', method: :get %>
-<%= render(list_note(@subject)) || "You have no notes for #{cap_sub(@subject)}." %>
+<%= render(@notes) || "You have no notes for #{cap_sub(@subject)}." %>

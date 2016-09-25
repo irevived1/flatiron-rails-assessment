@@ -3,7 +3,7 @@ class SubjectsController < ApplicationController
     @subjects = current_user.subjects.uniq
     respond_to do |format|
       format.html { render :index }
-      format.json { render json: @subject}
+      format.json { render json: @subjects}
     end
   end
 
@@ -12,9 +12,10 @@ class SubjectsController < ApplicationController
     unless @subject
       return redirect_to subjects_path
     end
+    @notes = Note.where("user_id == #{current_user.id} AND subject_id == #{sub.id}")
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @subject}
+      format.json { render json: @notes}
     end
   end
 
