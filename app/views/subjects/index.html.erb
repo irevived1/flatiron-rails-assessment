@@ -28,7 +28,7 @@
   <% while i < size %>
       <tr>
         <td><%= link_to cap_sub(tmp[i]) , subject_path(tmp[i]) %></td>
-        <td><%= list_note(tmp[i]).size %></td>
+        <td><%= Note.list_note(current_user,tmp[i]).size %></td>
         <td>
           <%= link_to "Add",
                       notesub_path(tmp[i]), :class => 'btn btn-default btn-xs' %>
