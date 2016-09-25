@@ -1,5 +1,10 @@
-<%= form_for [ note.subject, note ], :html => { :class => "form-horizontal note" } do |f| %>
+<% if note.subject.id %>
+  <% arr = [ note.subject, note ] %>
+<% else %>
+  <% arr = note %>
+<% end %>
 
+<%= form_for arr, :html => { :class => "form-horizontal note" } do |f| %>
   <% if note.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">
