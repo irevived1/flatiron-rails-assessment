@@ -16,7 +16,11 @@ class NotesController < ApplicationController
     @note.user = current_user
     if @note.save && @note.subject.save
       flash[:notice] = "Successfully created new note."
-      redirect_to subject_note_path(@note.subject,@note)
+      # redirect_to subject_note_path(@note.subject,@note)
+      respond_to do |format|
+        format.html { redirect_to subject_note_path(@note.subject,@note) }
+        format.json { render json: @note}
+      end
     else
       flash[:notice] = "Warning, no fields can be blank!"
       return render '/notes/new'
