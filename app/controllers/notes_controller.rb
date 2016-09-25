@@ -19,11 +19,16 @@ class NotesController < ApplicationController
       redirect_to subject_note_path(@note.subject,@note)
     else
       flash[:notice] = "Warning, no fields can be blank!"
-      render '/notes/new'
+      return render '/notes/new'
     end
   end
 
   def show
+    @note = Note.find_by(id:params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @note}
+    end
   end
 
   def edit
