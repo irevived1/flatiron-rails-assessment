@@ -57,7 +57,7 @@ function fill_in_form(obj) {
     noteid = data.id
   
     $('#deletebtn').remove();
-    $('#updatebtn').after(' <a id="deletebtn" data-confirm="Are you sure?" class="btn btn-danger" rel="nofollow" data-method="delete" href="/subjects/3/notes/1">Delete</a>');
+    $('#updatebtn').after(' <a id="deletebtn" data-dismiss="modal" data-confirm="Are you sure?" class="btn btn-danger" rel="nofollow">Delete</a>');
   });
 }
 
