@@ -33,7 +33,7 @@ function addListeners() {
         dataType: 'json',
         data: $('form').serialize() ,
         success: function (data) {
-          debugger;
+          //update note here;
         }
       });
     } else {
@@ -43,8 +43,20 @@ function addListeners() {
         $('#notes').prepend(viewnote(data));
       });
     }
-    e.preventDefault();
+    // e.preventDefault();
   });
+
+
+ $(document).delegate('#deletebtn','click', function (e) {
+    $.ajax({
+      url: '/subjects/' + subid + '/notes/' + noteid,
+      type: 'DELETE',
+      dataType: 'json',
+      // data: $('form').serialize() ,
+      success: function (data) {
+      }
+    });
+ });
 }
 
 function fill_in_form(obj) {
@@ -57,7 +69,7 @@ function fill_in_form(obj) {
     noteid = data.id
   
     $('#deletebtn').remove();
-    $('#updatebtn').after(' <a id="deletebtn" data-dismiss="modal" data-confirm="Are you sure?" class="btn btn-danger" rel="nofollow">Delete</a>');
+    $('#updatebtn').after(' <a id="deletebtn" data-confirm="Are you sure?" data-dismiss="modal" class="btn btn-danger" rel="nofollow">Delete</a>');
   });
 }
 
