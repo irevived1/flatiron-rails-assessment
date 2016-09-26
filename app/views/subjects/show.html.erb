@@ -3,5 +3,34 @@
 <%= link_to "Back to Subjects", subjects_path, :class => 'btn btn-primary' %>
 <h1>Subject: <%= cap_sub(@subject) %></h1>
 <br />
-<%= link_to "Add Note to #{cap_sub(@subject)}", notesub_path(@subject), :class => 'btn btn-default btn-s', method: :get %>
+
+<%# <%= link_to "Add Note to #{cap_sub(@subject)}", notesub_path(@subject), :class => 'btn btn-default btn-s', method: :get %1> %>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+<%= "Add Note to #{cap_sub(@subject)}" %>
+</button>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <%= render :partial => 'notes/form', :locals => { :note => @note,:subject => @subject } %>
+      </div>
+      <%# <div class="modal-footer"> %>
+      <%#   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> %>
+      <%#   <button type="button" class="btn btn-primary" data-dismiss="modal">Add Now!</button> %>
+      <%# </div> %>
+    </div>
+  </div>
+</div>
+
+
+
 <%= render(@notes) || "You have no notes for #{cap_sub(@subject)}." %>

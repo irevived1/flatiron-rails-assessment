@@ -9,6 +9,7 @@ class SubjectsController < ApplicationController
 
   def show
     @subject = Subject.find_by(id:params[:id])
+    @note = Note.new(subject:@subject)
     unless @subject
       return redirect_to subjects_path
     end
