@@ -1,10 +1,17 @@
 class NotesController < ApplicationController
 
-  before_action :find_note, only: [:show, :edit, :destroy, :update]
+  before_action :find_note, only: [:show, :edit, :destroy, :update, :note]
 
   def new
     @note = Note.new
     @note.build_subject
+  end
+
+  def note
+    if @note.user_id == current_user.id
+      return render json: @note
+    end
+    return redirect_to home_index_path;
   end
 
   def create
@@ -18,8 +25,8 @@ class NotesController < ApplicationController
       flash[:notice] = "Successfully created new note."
       # redirect_to subject_note_path(@note.subject,@note)
       respond_to do |format|
-        format.html { redirect_to subject_note_path(@note.subject,@note) }
         format.json { render json: @note}
+        format.html { redirect_to subject_note_path(@note.subject,@note) }
       end
     else
       flash[:notice] = "Warning, no fields can be blank!"
@@ -59,8 +66,8 @@ class NotesController < ApplicationController
       # redirect_to subject_note_path(@note.subject,@note)
 
       respond_to do |format|
-        format.html { redirect_to subject_note_path(@note.subject,@note) }
         format.json { render json: @note}
+        format.html { redirect_to subject_note_path(@note.subject,@note) }
       end
     else
       flash[:notice] = "Warning, no fields can be blank!"
@@ -69,7 +76,9 @@ class NotesController < ApplicationController
   end
 
   def destroy
-    @note.destroy
+    if @note.user_id == current_user.id
+      @note.destroy
+    end
     redirect_to home_index_path
   end
 

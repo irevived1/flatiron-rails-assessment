@@ -5,7 +5,7 @@
 
 <br />
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+<button type="button" class="btn btn-primary btn-lg newnote" data-toggle="modal" data-target="#myModal">
 Add a Note
 </button>
 
@@ -17,7 +17,7 @@ Add a Note
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel"> Pop up </h4>
       </div>
       <div class="modal-body">
         <%= render :partial => 'notes/form', :locals => { :note => @note } %>
@@ -32,3 +32,6 @@ Add a Note
 
 <%# no need to render using rails, going to use js to display notes %>
 <%# <%= render(@notes) || "You have no notes." %1> %>
+<div id="notes" class="container">
+  
+</div>

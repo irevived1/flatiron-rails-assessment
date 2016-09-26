@@ -1,3 +1,5 @@
+
+<%= javascript_include_tag 'notes.js' %>
 <br />
 <%# <%= button_to "Back to Subjects", subjects_path, method: :get %1> %>
 <%= link_to "Back to Subjects", subjects_path, :class => 'btn btn-primary' %>
@@ -7,7 +9,7 @@
 <%# <%= link_to "Add Note to #{cap_sub(@subject)}", notesub_path(@subject), :class => 'btn btn-default btn-s', method: :get %1> %>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+<button type="button" class="btn btn-primary btn-lg newnote" data-toggle="modal" data-target="#myModal">
 <%= "Add Note to #{cap_sub(@subject)}" %>
 </button>
 <!-- Modal -->
@@ -32,5 +34,7 @@
 </div>
 
 
-
-<%= render(@notes) || "You have no notes for #{cap_sub(@subject)}." %>
+<div id="notes">
+  
+</div>
+<%# <%= render(@notes) || "You have no notes for #{cap_sub(@subject)}." %1> %>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   # resource :notes
   get 'notes/new' => 'notes#new', as: 'notes'
+  get 'notes/:id' => 'notes#note', as: 'note'
   post 'notes/new' => 'notes#create'
   # put 'notes/:id' => 'notes#update'
 
