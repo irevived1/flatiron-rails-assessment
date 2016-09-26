@@ -47,16 +47,18 @@ function addListeners() {
   });
 
 
- $(document).delegate('#deletebtn','click', function (e) {
+  $(document).delegate('#deletebtn','click', function (e) {
     $.ajax({
       url: '/subjects/' + subid + '/notes/' + noteid,
       type: 'DELETE',
       dataType: 'json',
-      // data: $('form').serialize() ,
-      success: function (data) {
+      complete: function (jqXHR, textStatus) {
+      },
+      success: function (data, textStatus, jqXHR) {
+        $('#'+noteid).remove();
       }
-    });
- });
+    })
+  });
 }
 
 function fill_in_form(obj) {
@@ -67,7 +69,7 @@ function fill_in_form(obj) {
     $('#updatebtn').val('Update Note');
     subid = data.subject.id;
     noteid = data.id
-  
+
     $('#deletebtn').remove();
     $('#updatebtn').after(' <a id="deletebtn" data-confirm="Are you sure?" data-dismiss="modal" class="btn btn-danger" rel="nofollow">Delete</a>');
   });
@@ -82,7 +84,6 @@ function resetpopup() {
   subid = undefined;
   $('#deletebtn').remove();
 }
-
 
 $(function () {
   ajaxcall();

@@ -25,8 +25,8 @@ class NotesController < ApplicationController
       flash[:notice] = "Successfully created new note."
       # redirect_to subject_note_path(@note.subject,@note)
       respond_to do |format|
-        format.json { render json: @note}
-        format.html { redirect_to subject_note_path(@note.subject,@note) }
+        format.json {return render json: @note}
+        format.html {return redirect_to subject_note_path(@note.subject,@note) }
       end
     else
       flash[:notice] = "Warning, no fields can be blank!"
@@ -39,8 +39,8 @@ class NotesController < ApplicationController
       return redirect_to home_index_path
     end
     respond_to do |format|
-      format.html { render :show }
-      format.json { render json: @note}
+      format.html {return render :show }
+      format.json {return render json: @note}
     end
   end
 
@@ -66,8 +66,8 @@ class NotesController < ApplicationController
       # redirect_to subject_note_path(@note.subject,@note)
 
       respond_to do |format|
-        format.json { render json: @note}
-        format.html { redirect_to subject_note_path(@note.subject,@note) }
+        format.json {return render json: @note}
+        format.html {return redirect_to subject_note_path(@note.subject,@note) }
       end
     else
       flash[:notice] = "Warning, no fields can be blank!"
@@ -79,7 +79,12 @@ class NotesController < ApplicationController
     if @note.user_id == current_user.id
       @note.destroy
     end
-    redirect_to home_index_path
+
+    respond_to do |format|
+      format.json { return render json: @note }
+      format.html { return redirect_to home_index_path }
+    end
+    
   end
 
   def find_note

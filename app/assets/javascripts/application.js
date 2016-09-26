@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= re quire turbolinks
+//= require turbolinks
 //= require main
 // do not want tree;
 //= re quire_tree .

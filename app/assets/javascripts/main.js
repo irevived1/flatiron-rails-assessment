@@ -5,7 +5,7 @@ function capitalizeEachWord(str) {
 }
 
 function viewnote(data) {
-  return ' <div class="page-header"> \
+  return '<div id="'+ data.id + '"> <div class="page-header"> \
     <h1 >' + data.name + '</h1> \
   </div> \
   <dl class="dl-horizontal"> \
@@ -15,5 +15,5 @@ function viewnote(data) {
     <dd><a href="/subjects/' + data.subject.id + '">' + capitalizeEachWord(data.subject.name) + '</a></dd> \
     <dt><strong>Content:</strong></dt> \
     <dd>' + data.content + '</dd \
-  </dl>'
+  </dl></div>'
 }
