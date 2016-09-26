@@ -41,6 +41,11 @@ function addListeners() {
       newnote.done(function(data){
         //add new note here;
         $('#notes').prepend(viewnote(data));
+        //add listener on it too
+        $('#'+data.id+' a.impo').on('click', function (e) {
+          fill_in_form($(this));
+        });
+
       });
     }
     // e.preventDefault();
