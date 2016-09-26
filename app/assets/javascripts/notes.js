@@ -34,6 +34,10 @@ function addListeners() {
         data: $('form').serialize() ,
         success: function (data) {
           //update note here;
+          $('#'+data.id + ' h1').text(data.name);
+          $('#'+data.id + ' .impo').text(data.name);
+          $('#'+data.id + ' .subj').text(capitalizeEachWord(data.subject.name));
+          $('#'+data.id + ' .cont').text(data.content);
         }
       });
     } else {
