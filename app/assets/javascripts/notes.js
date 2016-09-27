@@ -1,4 +1,4 @@
-// var data;
+var data;
 var subid, noteid;
 
 // function setdata(tmp) {
@@ -18,6 +18,7 @@ function ajaxcall() {
 }
 
 function addListeners() {
+  $('#updatebtn').attr("onclick","return false");
   $('#notes a.impo').each(function (index) {
     $(this).on('click', function (e) {
       fill_in_form($(this));
@@ -46,23 +47,37 @@ function addListeners() {
           $('#'+data.id).animate({
               "font-size":"1em"
             },250);
+        // e.preventDefault();
+          $('#myModal').modal('hide');
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          // error callback
+          ttips();
         }
       });
     } else {
-      var newnote = $.post('/notes/new',$('form').serialize());
-      newnote.done(function(data){
-        //add new note here;
-        $('#notes').prepend(viewnote(data));
-        //add listener on it too
-        $('#'+data.id).hide();
-        $('#'+data.id).animate({ "height": "toggle", "opacity": "toggle" },500);
-        $('#'+data.id+' a.impo').on('click', function (e) {
-          fill_in_form($(this));
-        });
-
+      $.ajax({
+        url: '/notes/new',
+        type: 'POST',
+        dataType: 'json',
+        data: $('form').serialize(),
+        success: function (data) {
+          //add new note here;
+          $('#notes').prepend(viewnote(data));
+          //add listener on it too
+          $('#'+data.id).hide();
+          $('#'+data.id).animate({ "height": "toggle", "opacity": "toggle" },500);
+          $('#'+data.id+' a.impo').on('click', function (e) {
+            fill_in_form($(this));
+          });
+          $('#myModal').modal('hide');
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          // error callback
+          ttips();
+        }
       });
     }
-    // e.preventDefault();
   });
 
 
@@ -113,7 +128,7 @@ function resetpopup() {
 function jump(h){
   $('html, body').animate({
     scrollTop: $('#'+h).offset().top
-  }, 1000);
+  }, 750);
 }
 
 $(function () {

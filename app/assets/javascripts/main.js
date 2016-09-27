@@ -17,3 +17,16 @@ function viewnote(data) {
     <dd class="cont">' + data.content + '</dd \
   </dl></div>'
 }
+
+function ttips() {
+
+  if ($('#note_name').val() == "") {
+    $('#note_name').tooltip({'placement':'bottom', 'title': 'Name cannot be blank!'}).tooltip('show');
+  }
+  if ($('#note_subject_attributes_name').val() == "") {
+    $('#note_subject_attributes_name').tooltip({'placement':'bottom', 'title': 'Subject name cannot be blank!'}).tooltip('show');
+  }
+  if ($('#note_content').val() == "") {
+    $('#note_content').tooltip({'placement':'bottom', 'title': 'Content cannot be blank!'}).tooltip('show');
+  }
+}
