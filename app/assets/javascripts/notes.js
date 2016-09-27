@@ -8,10 +8,12 @@ function setdata(tmp) {
 function ajaxcall() {
   $.getJSON(window.location.href , function(data){
     $('#notes').html('');
+    $('#notes').hide();
     data.forEach(function (obj) {
       $('#notes').prepend(viewnote(obj));
     });
-  addListeners();
+    $('#notes').animate({ "height": "toggle", "opacity": "toggle" },2000);
+    addListeners();
   });
 }
 
@@ -68,6 +70,10 @@ function addListeners() {
       }
     })
   });
+
+  $('.myanchor').on('click', function (e) {
+    jump('toptop');
+  });
 }
 
 function fill_in_form(obj) {
@@ -92,6 +98,13 @@ function resetpopup() {
   noteid = undefined;
   subid = undefined;
   $('#deletebtn').remove();
+}
+
+//smooth scrolling
+function jump(h){
+  $('html, body').animate({
+    scrollTop: $('#'+h).offset().top
+  }, 1000);
 }
 
 $(function () {
