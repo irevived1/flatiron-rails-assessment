@@ -41,3 +41,12 @@ function ttips() {
 function hidemodal() {
   $('#myModal').modal('hide');
 }
+
+function showLoading() {
+  $('#waitingmodal').modal('show');
+}
+
+
+function hideLoading() {
+  $('#waitingmodal').modal('hide');
+}

@@ -6,6 +6,7 @@ var subid, noteid;
 // }
 
 function ajaxcall() {
+  showLoading();
   $.getJSON(window.location.href , function(data){
     $('#notes').html('');
     $('#notes').hide();
@@ -15,6 +16,7 @@ function ajaxcall() {
     $('#notes').animate({ "height": "toggle", "opacity": "toggle" },1500);
     addListeners();
   });
+  hideLoading();
 }
 
 function addListeners() {

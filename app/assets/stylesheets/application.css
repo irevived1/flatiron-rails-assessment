@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+
+  #waitingmodal {
+    padding: 200px 0px 0px 0px;
+  }
