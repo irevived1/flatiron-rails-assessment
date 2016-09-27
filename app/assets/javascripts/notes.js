@@ -1,9 +1,9 @@
-var data;
+// var data;
 var subid, noteid;
 
-function setdata(tmp) {
-  data = tmp;
-}
+// function setdata(tmp) {
+//   data = tmp;
+// }
 
 function ajaxcall() {
   $.getJSON(window.location.href , function(data){

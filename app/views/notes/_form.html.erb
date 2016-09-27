@@ -23,7 +23,7 @@
   <div class="form-group">
     <%= f.label :name, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :name, :class => 'form-control' %>
+      <%= f.text_field :name, placeholder:'Note Title', :class => 'form-control' %>
     </div>
     <%=f.error_span(:name) %>
   </div>
@@ -33,7 +33,7 @@
   <%= f.fields_for :subject_attributes do |sub| %>
     <%= sub.label "Subject" , :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= sub.text_field :name , 'data-subject':"#{note.subject.name}", :class => 'form-control', list: "subject_autocomplete",  value:"#{note.subject.name}" %>
+      <%= sub.text_field :name , placeholder:'Choose or create Subject', 'data-subject':"#{note.subject.name}", :class => 'form-control', list: "subject_autocomplete",  value:"#{note.subject.name}" %>
 
     <%# <datalist id="subject_autocomplete"  > %>
     <%#     <%= Subject.all.each  do |suuu| %1> %>
@@ -55,7 +55,7 @@
   <div class="form-group">
     <%= f.label :content, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_area :content, size: "30x10" , :class => 'form-control' %>
+      <%= f.text_area :content, placeholder:'Your content here...', size: "30x10" , :class => 'form-control' %>
     </div>
     <%=f.error_span(:content) %>
   </div>
