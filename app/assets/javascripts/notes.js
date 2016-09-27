@@ -40,6 +40,12 @@ function addListeners() {
           $('#'+data.id + ' .impo').text(data.name);
           $('#'+data.id + ' .subj').text(capitalizeEachWord(data.subject.name));
           $('#'+data.id + ' .cont').text(data.content);
+          $('#'+data.id).animate({
+              "font-size":"1.2em"
+            },250);
+          $('#'+data.id).animate({
+              "font-size":"1em"
+            },250);
         }
       });
     } else {
