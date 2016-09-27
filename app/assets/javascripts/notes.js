@@ -12,7 +12,7 @@ function ajaxcall() {
     data.forEach(function (obj) {
       $('#notes').prepend(viewnote(obj));
     });
-    $('#notes').animate({ "height": "toggle", "opacity": "toggle" },2000);
+    $('#notes').animate({ "height": "toggle", "opacity": "toggle" },1500);
     addListeners();
   });
 }
@@ -48,6 +48,8 @@ function addListeners() {
         //add new note here;
         $('#notes').prepend(viewnote(data));
         //add listener on it too
+        $('#'+data.id).hide();
+        $('#'+data.id).animate({ "height": "toggle", "opacity": "toggle" },500);
         $('#'+data.id+' a.impo').on('click', function (e) {
           fill_in_form($(this));
         });
@@ -66,7 +68,8 @@ function addListeners() {
       complete: function (jqXHR, textStatus) {
       },
       success: function (data, textStatus, jqXHR) {
-        $('#'+noteid).remove();
+        $('#'+noteid).animate({ "height": "toggle", "opacity": "toggle" },500, function(){$(this).remove();});
+        // $('#'+noteid).remove();
       }
     })
   });
