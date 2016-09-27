@@ -48,7 +48,7 @@ function addListeners() {
               "font-size":"1em"
             },250);
         // e.preventDefault();
-          $('#myModal').modal('hide');
+          hidemodal();
         },
         error: function (jqXHR, textStatus, errorThrown) {
           // error callback
@@ -70,7 +70,7 @@ function addListeners() {
           $('#'+data.id+' a.impo').on('click', function (e) {
             fill_in_form($(this));
           });
-          $('#myModal').modal('hide');
+          hidemodal();
         },
         error: function (jqXHR, textStatus, errorThrown) {
           // error callback
@@ -122,13 +122,6 @@ function resetpopup() {
   noteid = undefined;
   subid = undefined;
   $('#deletebtn').remove();
-}
-
-//smooth scrolling
-function jump(h){
-  $('html, body').animate({
-    scrollTop: $('#'+h).offset().top
-  }, 750);
 }
 
 $(function () {

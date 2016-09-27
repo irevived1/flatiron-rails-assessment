@@ -1,3 +1,10 @@
+//smooth scrolling
+function jump(h){
+  $('html, body').animate({
+    scrollTop: $('#'+h).offset().top
+  }, 750);
+}
+
 function capitalizeEachWord(str) {
   return str.replace(/\w\S*/g, function(txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -29,4 +36,8 @@ function ttips() {
   if ($('#note_content').val() == "") {
     $('#note_content').tooltip({'placement':'bottom', 'title': 'Content cannot be blank!'}).tooltip('show');
   }
+}
+
+function hidemodal() {
+  $('#myModal').modal('hide');
 }
