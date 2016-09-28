@@ -15,9 +15,23 @@ function ajaxcall() {
     });
     $('#notes').animate({ "height": "toggle", "opacity": "toggle" },1500);
     addListeners();
+    hideLoading();
   });
-  hideLoading();
 }
+
+function Content (str) {
+  this.content = str;
+}
+
+Content.prototype.wordCount  = function (str) {
+  if (str) {
+    return str.split(' ').length;
+  } else {
+    return this.str.split(' ').length;
+  }
+};
+
+var counter = new Content('holder');
 
 function addListeners() {
   $('#updatebtn').attr("onclick","return false");
@@ -99,6 +113,16 @@ function addListeners() {
 
   $('.myanchor').on('click', function (e) {
     jump('toptop');
+  });
+
+  // textarea listener
+  $("textarea").on('change keyup paste', function() {
+    if ($("textarea").val() == '' ) {
+      $('#wordcount').text('');
+      return;
+    }
+    var tmp = counter.wordCount(($("textarea").val()));
+    $('#wordcount').text( tmp + ' word(s)');
   });
 }
 

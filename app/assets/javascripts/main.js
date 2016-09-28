@@ -11,6 +11,7 @@ function capitalizeEachWord(str) {
   });
 }
 
+
 function viewnote(data) {
   return '<div id="'+ data.id + '"> <div class="page-header"> \
     <h1 >' + data.name + '</h1> \

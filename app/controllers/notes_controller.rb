@@ -94,6 +94,7 @@ class NotesController < ApplicationController
     end
   end
 
+
   private
   def note_params
     params.require(:note).permit(:name,:content,subject_attributes:[:name])
