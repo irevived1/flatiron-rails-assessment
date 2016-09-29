@@ -25,7 +25,7 @@ function Content (str) {
 
 Content.prototype.wordCount  = function (str) {
   if (str) {
-    return str.split(' ').length;
+    return str.split(/\s+/).length;
   } else {
     return this.str.split(' ').length;
   }
